@@ -828,7 +828,12 @@ class S2SBeamSearcher(S2SBaseSearcher):
         predictions = batch_filter_seq2seq_output(
             predictions, eos_id=self.eos_index
         )
-
+        if self.topk > 1:
+            if self.return_log_probs:
+                return predictions, topk_scores, topk_hyps, log_probs
+            else:
+                return predictions, topk_scores, topk_hyps
+                
         if self.return_log_probs:
             return predictions, topk_scores, log_probs
         else:
