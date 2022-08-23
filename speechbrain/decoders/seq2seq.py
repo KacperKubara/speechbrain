@@ -830,9 +830,9 @@ class S2SBeamSearcher(S2SBaseSearcher):
         )
         if self.topk > 1:
             if self.return_log_probs:
-                return predictions, topk_scores, topk_hyps, log_probs
+                return predictions, topk_scores, topk_hyps, hyps_and_scores, log_probs
             else:
-                return predictions, topk_scores, topk_hyps
+                return predictions, topk_scores, topk_hyps, hyps_and_scores, log_probs
                 
         if self.return_log_probs:
             return predictions, topk_scores, log_probs
